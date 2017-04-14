@@ -15,6 +15,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def new
+    if user_signed_in?
+      #@user = User.new
+      render 'edit'
+    else
+      super
+    end
+  end
+
   def update
     @user = User.find(params[:id])
 
