@@ -1,4 +1,4 @@
-class CreateEventLocalitiesJoinTable < ActiveRecord::Migration[5.0]
+class CreateEventLocalities < ActiveRecord::Migration[5.0]
   def change
     create_table :event_localities do |t|
       t.belongs_to :event, index: true

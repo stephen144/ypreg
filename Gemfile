@@ -20,6 +20,9 @@ gem 'foreigner'
 gem 'immigrant'
 gem 'awesome_print'
 
+# Webserver
+gem 'puma'
+
 # Database
 gem 'pg'
 gem 'pg_search'
@@ -40,7 +43,7 @@ gem 'figaro'
 gem 'simple_form'
 
 # Monitoring
-gem 'skylight'
+#gem 'skylight'
 
 # Decorator pattern
 gem 'draper'
@@ -54,12 +57,8 @@ gem 'mini_magick'
 # Avatar uploader
 gem 'carrierwave', '~>1.0'
 
-group :production do
-  gem 'rails_12factor'
-end
-
 group :development do
-# Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   gem 'better_errors'

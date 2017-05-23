@@ -36,8 +36,10 @@ ActiveRecord::Schema.define(version: 20151022151545) do
   end
 
   create_table "event_lodgings", force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "lodging_id"
+    t.integer  "event_id"
+    t.integer  "lodging_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_event_lodgings_on_event_id", using: :btree
     t.index ["lodging_id"], name: "index_event_lodgings_on_lodging_id", using: :btree
   end
@@ -133,6 +135,7 @@ ActiveRecord::Schema.define(version: 20151022151545) do
     t.integer  "vehicle_seating_capacity"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.index ["event_locality_id", "user_id"], name: "index_registrations_on_event_locality_id_and_user_id", unique: true, using: :btree
     t.index ["event_locality_id"], name: "index_registrations_on_event_locality_id", using: :btree
     t.index ["event_lodging_id"], name: "index_registrations_on_event_lodging_id", using: :btree
     t.index ["user_id"], name: "index_registrations_on_user_id", using: :btree
