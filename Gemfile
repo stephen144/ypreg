@@ -57,6 +57,9 @@ gem 'mini_magick'
 # Avatar uploader
 gem 'carrierwave', '~>1.0'
 
+# TODO: different seeds for dev and prod
+gem 'faker'
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -81,7 +84,6 @@ group :development, :test do
   gem 'rspec-collection_matchers'
   gem 'rspec_junit_formatter'
   gem 'factory_girl_rails'
-  gem 'faker'
 #   gem 'simplecov', require: false
 #   gem 'simplecov-csv', require: false
   gem 'coverband'
