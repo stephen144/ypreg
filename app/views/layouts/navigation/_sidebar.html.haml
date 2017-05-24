@@ -1,0 +1,50 @@
+.main-sidebar
+  .sidebar
+    .bottom
+      .container
+        .row
+          .col-md-2.left-sidebar
+            %nav.main-nav
+              %ul.main-menu
+                - if policy(:dashboard).show?
+                  %li
+                    = link_to dashboard_index_url do
+                      %i.fa.fa-dashboard.fa-fw
+                      %span.text Dashboard
+                %li
+                  - if policy(:dashboard).manage_site?
+                    %a.js-sub-menu-toggle{:href => "#"}
+                      %i.fa.fa-clipboard.fa-fw
+                      %span.text Manage
+                      %i.toggle-icon.fa.fa-angle-left
+                    %ul.sub-menu
+                      - if policy(Event).index?
+                        %li
+                          = link_to events_url do
+                            %span.text Events
+                      - if policy(Location).index?
+                        %li
+                          = link_to locations_url do
+                            %span.text Locations
+                      - if policy(Locality).index?
+                        %li
+                          = link_to localities_url do
+                            %span.text Localities
+                      - if policy(Lodging).index?
+                        %li
+                          = link_to lodgings_url do
+                            %span.text Lodgings
+                      - if policy(User).index?
+                        %li
+                          = link_to users_url do
+                            %span.text Users
+            .sidebar-minified.js-toggle-minified
+              %i.fa.fa-angle-left
+            .sidebar-content
+              .panel.panel-default
+                .panel-heading
+                  %h5
+                    %i.fa.fa-lightbulb-o
+                    Tips
+                #tip.panel-body
+                  = @tips_message ||= 'Check here for useful tips based on the page you are viewing.'
