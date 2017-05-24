@@ -38,13 +38,3 @@
                         %li
                           = link_to users_url do
                             %span.text Users
-            .sidebar-minified.js-toggle-minified
-              %i.fa.fa-angle-left
-            .sidebar-content
-              .panel.panel-default
-                .panel-heading
-                  %h5
-                    %i.fa.fa-lightbulb-o
-                    Tips
-                #tip.panel-body
-                  = @tips_message ||= 'Check here for useful tips based on the page you are viewing.'

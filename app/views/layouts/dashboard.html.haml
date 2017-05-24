@@ -18,39 +18,9 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag [href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"]
 
-  %body.fixes.skin-blue
-    .dashboard
-      .wrapper
-        - if flash[:notice]
-          .alert.alert-success.top-general-alert
-            %a.close{:type => "button"} ×
-            = flash[:notice]
-        - elsif flash[:error]
-          .alert.alert-danger.top-general-alert
-            %a.close{:type => "button"} ×
-            = flash[:error]
-        - elsif flash[:alert]
-          .alert.alert-danger.top-general-alert
-            %a.close{:type => "button"} ×
-            = flash[:alert]
-
-        = render "layouts/navigation/layout"
-
-        .col-md-10.content-wrapper
-          .row
-            .col-lg-4
-              %ul.breadcrumb
-                %li
-                  %i.fa.fa-home
-                  %a{href: dashboard_index_path} Home
-                %li.active= params[:controller].capitalize
-            .col-lg-8
-              .top-content
-                %ul.list-inline.mini-stat
-                  %li
-                  %li
-                  %li
-  
-                = yield
-
-        = render "layouts/navigation/footer"
+  %body.fixed.skin-blue
+    .wrapper
+      = render "layouts/navigation/layout"
+      .content-wrapper
+        = yield
+      = render "layouts/navigation/footer"
