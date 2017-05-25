@@ -1,37 +1,23 @@
 %header.main-header
-  = link_to "YPREG", dashboard_index_path
-  %h1.sr-only YPReg Dashboard
-
-  #tour-searchbox.input-group.searchbox
-    %input.form-control{disabled: "disabled", placeholder: "", type: "search"}/
-    %span.input-group-btn
-      %button.btn.btn-default{type: "button"}
-        %i.fa.fa-search
-
+  %a.logo{href: '/'} YP Registration
   %nav.navbar.navbar-static-top{role: 'navigation'}
-    %i.fa.fa-bars
-      .notifications
-        %ul
-        - if current_user
-          .logged-user
-            .btn-group
-              %a#loggedUserDropdown.btn.btn-link.dropdown-toggle{'data-toggle': "dropdown", href: "#"}
-                = succeed "\u{a0}\u{a0}" do
-                  %span.name= current_user.name
-                %span.caret
-              %ul.dropdown-menu{"aria-labelledby": "loggedUserDropdown", role: "menu"}
-                %li
-                  = link_to user_path(current_user) do
-                    %i.fa.fa-user
-                    %span.text Profile
-                %li
-                  %a{href: "#"}
-                    %i.fa.fa-cog
-                    %span.text Settings
-                %li
-                  = link_to  destroy_user_session_path, method: :delete do
-                    %i.fa.fa-power-off
-                    %span.text Logout
+    .navbar-custom-menu
+      %ul.nav.navbar-nav
+
+        -if user_signed_in?
+          %li.dropdown.user.user-menu
+            %a.dropdown-toggle{'data-toggle': 'dropdown', href: '#'}
+              %img.user-image{alt: 'User Image', src: 'http://placehold.it/160x160'}
+              %span.hidden-xs= current_user.name
+            %ul.dropdown-menu
+              %li.user-header
+                %img.img-circle{alt: 'User Image', src: 'http://placehold.it/160x160'}
+              %li.user-footer
+                .pull-left
+                  %a.btn.btn-default.btn-flat{href: user_path(current_user)} Profile
+                .pull-right
+                  %a.btn.btn-default.btn-flat{rel: 'nofollow', 'data-method': 'delete', href: destroy_user_session_path} Sign out
+
 
 %div
   - if flash[:notice]

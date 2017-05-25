@@ -1,8 +1,9 @@
 YpwReg::Application.routes.draw do
 
-  root 'welcome#index'
-  get 'welcome/index'
-  get 'dashboard/index'
+  authenticated :user do
+    root to: 'welcome#index', as: :authenticated_root
+  end
+  root to: redirect('/users/sign_in')
 
   resources :locations
   resources :localities

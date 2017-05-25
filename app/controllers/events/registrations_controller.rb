@@ -24,11 +24,12 @@ class Events::RegistrationsController < ApplicationController
   end
 
   def new
-    new_create(params[:event_id], params[:event_locality_id], params[:format])
+    set_new_registration(params[:event_id], params[:event_locality_id], params[:format])
+    set_event_lodgings
   end
 
   def create
-    new_create(params[:event_id], params[:event_locality_id], params[:user_id])
+    set_new_registration(params[:event_id], params[:event_locality_id], params[:user_id])
 
     if @registration.update(permitted_attributes(Registration))
       flash[:notice] = 'Registration created successfully'
@@ -47,13 +48,11 @@ class Events::RegistrationsController < ApplicationController
     if params[:view] == 'attendance'
       @attendance = registration
       @user = @attendance.user
-      render 'attendance_edit'
-    else
-      @registration = registration
+      render 'attendance_edit' and return
     end
 
-    event_lodging_ids = @event.event_lodgings.with_vacancy.pluck(:id)
-    @event_lodgings = @event.event_lodgings.includes(:lodging).find(event_lodging_ids)
+    set_event_lodgings
+    @registration = registration
   end
 
   def update
@@ -88,7 +87,7 @@ class Events::RegistrationsController < ApplicationController
 
   private
 
-  def new_create(event_id, event_locality_id, user_id)
+  def set_new_registration(event_id, event_locality_id, user_id)
     @event = Event.find(event_id)
     if event_locality_id.present?
       event_locality = EventLocality.find(event_locality_id)
@@ -105,4 +104,10 @@ class Events::RegistrationsController < ApplicationController
     @registration = Registration.new(event_locality: event_locality, user: user)
     authorize @registration
   end
+
+  def set_event_lodgings
+    event_lodging_ids = @event.event_lodgings.with_vacancy.pluck(:id)
+    @event_lodgings = EventLodging.includes(:lodging).find(event_lodging_ids)
+  end
+
 end

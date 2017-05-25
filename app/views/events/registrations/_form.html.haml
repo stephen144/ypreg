@@ -60,7 +60,7 @@
       = f.label :lodging, class: 'col-md-2 control-label'
       .col-md-4
         - if policy(@registration).edit_lodging?
-          = f.collection_select :event_lodging_id, event_lodgings, -> (el) {el.object.id}, :name, options={prompt: true}, html_options={class: 'form-control select'}
+          = f.collection_select :event_lodging_id, event_lodgings, :object_id, :name, options={prompt: true}, html_options={class: 'form-control select'}
         - else
           %span.form-control{disabled: 'disabled'}= registration.lodging_name
     .form-group
