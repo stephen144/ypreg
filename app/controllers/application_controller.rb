@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
   #before_action :set_chart_values
 
   rescue_from Pundit::NotAuthorizedError do |exception|
-    flash.now[:alert] = exception.message
-    #redirect_to root_url, alert: exception.message
+    flash.alert = 'You are not allowed to do that!'#exception.message
+    redirect_to root_url
   end
 
   protected
@@ -33,8 +33,8 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    flash.now[:error] = 'You are not authorized to perform this action.'
-    #redirect_to(request.referrer || root_path)
+    flash[:error] = 'You are not authorized to perform this action.'
+    redirect_to(request.referrer || root_path)
   end
 
   def set_chart_values

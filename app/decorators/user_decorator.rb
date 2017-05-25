@@ -83,6 +83,10 @@ class UserDecorator < ApplicationDecorator
     format_phone_number(object.cell_phone)
   end
 
+  def first_name
+    object.name.split(/\W+/)[0]
+  end
+
   def gender
     object.gender.titleize
   end

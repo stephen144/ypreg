@@ -1,6 +1,13 @@
+!!! 5
 %html
   %head
     %title YP Registration
+
+    %meta{charset: 'utf-8'}
+    %meta{name: 'description', content: 'YPRegistration - Event Registration'}
+    %meta{name: 'keywords', content: 'Event,Registration'}
+    %meta{name: 'author', content: 'Hector D. Felix (hdfnet@gmail.com)'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0'}
 
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -12,5 +19,7 @@
       = render "layouts/navigation/header"
       = render "layouts/navigation/sidebar"
       .content-wrapper
+        - flash.each do |k, v|
+          %div{class: flash_class(k)}= v
         = yield
       = render "layouts/navigation/footer"
