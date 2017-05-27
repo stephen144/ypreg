@@ -31,6 +31,8 @@
                 %td= event.registration_cost
         - if policy(@event).edit?
           = link_to 'Edit', edit_event_path(@event), class: 'btn btn-primary btn-sm'
+        - if policy(@event).copy?
+          %td= link_to 'Copy', event_copies_path(event_id: @event), method: :post
         - if policy(@event).can_manage?
           #event-info-btn-group.btn-group
             %button#manage.btn.btn-default.btn-sm.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
