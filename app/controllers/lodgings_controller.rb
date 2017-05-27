@@ -3,7 +3,7 @@ class LodgingsController < ApplicationController
 
   def index
     authorize Lodging
-    @lodgings = policy_scope(Lodging.all)
+    @lodgings = policy_scope(Lodging).by_name
   end
 
   def show

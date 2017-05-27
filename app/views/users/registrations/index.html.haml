@@ -1,43 +1,10 @@
 %section.content-header
   %h1
     Users
+    %a.btn.btn-flat.btn-primary{href: 'admin/users/new'} New
 %section.content
   .row
     .col-xs-12
-      = link_to new_admin_user_path, class: 'btn btn-primary' do
-        = content_tag(:i, '', class: "fa fa-plus-square")
-        New User
       .box
         .box-body
-          %table.table.table-bordered.table-striped.table-hover
-            %thead
-              %tr
-                %th Name
-                %th Role
-                %th Gender
-                %th Email
-                %th Age
-                %th Grade
-                %th Locality
-                %th Phone
-                %th Last B.C.
-                %th Last Sign in
-            %tbody
-              - users.each do |user|
-                - @user = user.object
-                %tr{class: "#{user.background_check_date_row_class}"}
-                  %td= link_to user.name, user_path(@user)
-                  %td= user.role
-                  %td= user.gender
-                  %td= user.email
-                  %td= user.age
-                  %td= user.grade
-                  %td= user.locality_city
-                  %td= user.cell_phone
-                  %td= user.background_check_date
-                  %td= user.last_sign_in_at
-              - if @users.empty?
-                %tr
-                  %td{:colspan => "9"}
-                    %center No Users in the database...
-
+          = render 'table'

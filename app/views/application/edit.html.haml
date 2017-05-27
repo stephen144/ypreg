@@ -3,6 +3,6 @@
     .col-md-6
       .box.box-primary
         .box-header.with-border
-          %h1.box-title New Location
+          %h1.box-title= "Edit #{controller_name.singularize.titleize}"
         .box-body
           = render 'form'

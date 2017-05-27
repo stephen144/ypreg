@@ -6,14 +6,14 @@
           %li
             %a{href: events_url}
               %span Events
-        - if policy(Location).index?
-          %li
-            %a{href: locations_url}
-              %span Locations
         - if policy(Locality).index?
           %li
             %a{href: localities_url}
               %span Localities
+        - if policy(Location).index?
+          %li
+            %a{href: locations_url}
+              %span Locations
         - if policy(Lodging).index?
           %li
             %a{href: lodgings_url}

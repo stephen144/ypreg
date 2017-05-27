@@ -1,0 +1,11 @@
+%table.table.table-bordered.table-striped.table-hover
+  %thead
+    %tr
+      %th Name
+      %th State
+  %tbody
+    - localities.each do |locality|
+      - @locality = locality.object
+      %tr
+        %td= link_to locality.city, @locality
+        %td= locality.state

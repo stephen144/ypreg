@@ -9,11 +9,9 @@
           - decorated_user = current_user.decorate
           %li.dropdown.user.user-menu
             %a.dropdown-toggle{'aria-expanded': 'true', 'data-toggle': 'dropdown', href: '#'}
-              %img.user-image{alt: 'User Image', src: 'http://placehold.it/160x160'}
-              %span.hidden-xs= decorated_user.first_name
+              %span= decorated_user.first_name
             %ul.dropdown-menu
               %li.user-header
-                %img.img-circle{alt: 'User Image', src: 'http://placehold.it/160x160'}
                 %p
                   = decorated_user.name
                   %small= decorated_user.locality_city
