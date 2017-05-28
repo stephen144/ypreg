@@ -3,6 +3,9 @@
     .col-md-6
       .box.box-primary
         .box-header.with-border
-          %h1.box-title= "Edit #{controller_name.singularize.titleize}"
+          - name = controller_name.singularize
+          %h1.box-title= "Edit #{name.titleize}"
         .box-body
+          - object = instance_variable_get("@#{name}")
+          = render 'form_errors', locals: {name: name, form_errors: object.errors}
           = render 'form'

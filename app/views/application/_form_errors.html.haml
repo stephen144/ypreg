@@ -1,0 +1,10 @@
+- form_errors = locals[:form_errors]
+- name = locals[:name]
+
+- if form_errors.any?
+  .callout.callout-danger
+    - errors = pluralize(form_errors.count, "error")
+    %h4= "#{errors} prohibited this #{name} from being saved:"
+    %ul
+      - form_errors.full_messages.each do |msg|
+        %li= msg

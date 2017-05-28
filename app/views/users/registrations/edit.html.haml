@@ -11,6 +11,3 @@
           = form_for(*@form_params) do |f|
             = devise_error_messages!
             = render 'form', f: f
-            .widget-footer
-              = link_to "Back", :back, class: 'btn btn-default'
-              = f.submit "Update", class: 'btn btn-success'

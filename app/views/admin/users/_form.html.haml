@@ -1,12 +1,2 @@
 = form_for [:admin, @user], class: 'form-horizontal' do |f|
-  - if @user.errors.any?
-    #error_explanation.alert.alert-danger.alert-dismissable
-      %h4
-        %strong= pluralize(@user.errors.count, "error")
-        prohibited this user from being saved:
-      %ul
-        - @user.errors.full_messages.each do |msg|
-          %li= msg
   = render "/users/registrations/form", f: f
-  .form-group
-    = f.submit "Submit", class: 'btn btn-primary pull-right'
