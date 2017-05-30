@@ -1,8 +1,8 @@
 %section.content-header
   %h1
     = location.name
-    %a.btn.btn-flat.btn-primary{href: edit_location_path(@location)} Edit
-    %a.btn.btn-flat.btn-danger{href: location_path(@location), data: {confirm: 'Are you sure?', method: :delete}, ref: 'nofollow'} Delete
+    %a.btn.btn-primary{href: edit_location_path(@location)} Edit
+    %a.btn.btn-danger{href: location_path(@location), data: {confirm: 'Are you sure?', method: :delete}, ref: 'nofollow'} Delete
 %section.content
   .row
     .col-md-6

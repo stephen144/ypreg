@@ -12,7 +12,9 @@ gem 'coffee-rails'
 # CSS
 gem 'sass-rails'
 gem 'bootstrap-sass'
+gem 'font-awesome-sass'
 
+# Etc
 gem 'autoprefixer-rails'
 gem 'jbuilder'
 gem 'activemodel-serializers-xml'

@@ -1,13 +1,9 @@
 class Events::RegistrationsController < ApplicationController
-  decorates_assigned :event, :event_lodgings, :registration, :registrations
+  decorates_assigned :event, :event_lodgings, :registration 
 
   def index
     authorize Registration
-
     @event = Event.find(params[:event_id])
-    registrations = @event.registrations.includes(:user, :locality)
-    @registrations = policy_scope(registrations).by_user_name
-
     render 'attendance_index' if params[:view] == 'attendance'
   end
 

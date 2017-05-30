@@ -10,7 +10,7 @@
     - lodgings.each do |lodging|
       - @lodging = lodging.object
       %tr
-        %td= link_to lodging.name, @lodging
+        %td= lodging.name
         %td= lodging.lodging_type
         %td= lodging.location_name
         %td= lodging.max_capacity

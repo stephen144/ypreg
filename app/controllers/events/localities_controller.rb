@@ -1,14 +1,9 @@
 class Events::LocalitiesController < ApplicationController
-  decorates_assigned :all_locality_users, :event, :event_localities, :event_locality, :other_localities, :registrations, :users_not_registered
+  decorates_assigned :all_locality_users, :event, :event_locality, :registrations, :users_not_registered
 
-  def index
+  def add
     authorize EventLocality
-
     @event = Event.find(params[:event_id])
-    event_localities = @event.event_localities.includes(:locality)
-    @event_localities = policy_scope(event_localities).by_city
-    other_localities = Locality.where.not(id: @event.event_localities.pluck(:locality_id))
-    @other_localities = policy_scope(other_localities).by_city
   end
 
   def show

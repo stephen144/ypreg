@@ -3,7 +3,7 @@ class EventLocalityDecorator < ApplicationDecorator
 
   delegate :event, :locality 
   delegate :name, to: :event, prefix: true
-  delegate :city, :id, :state, to: :locality, prefix: true
+  delegate :city, :id, :state, to: :locality
 
   def lodging_count
     object.event_lodgings.size

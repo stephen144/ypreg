@@ -7,6 +7,7 @@ class EventLodging < ActiveRecord::Base
   
 # == Scopes ===============================================================
   #scope :assigned, -> { joins(:registrations).distinct }
+  scope :by_name, -> { joins(:lodging).merge(Lodging.order(:name)) }
   scope :with_vacancy, -> { joins(:lodging).left_outer_joins(:registrations).group(:id).having('COUNT(registrations.id) < MAX(lodgings.max_capacity)') }
 
 end

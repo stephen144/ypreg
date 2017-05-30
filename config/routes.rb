@@ -25,39 +25,23 @@ YpwReg::Application.routes.draw do
 
   resources :events do
     resources :registrations, controller: 'events/registrations'
-    resources :copies, only: [:new, :create,:show],
+    resources :copies, only: [:new, :create, :show],
               controller: 'events/copies'
     resources :localities, 
-              only: [:index, :show, :new, :create],
-              controller: 'events/localities'
+              only: [:show, :new, :create],
+              controller: 'events/localities' do
+                collection do
+                  get 'add'
+                end
+              end
     resources :lodgings,
               only: [:index, :new, :create],
               controller: 'events/lodgings' do
-      collection do
-        post 'add'
-        put 'remove'
-      end
-    end
-    resources :hospitality_locality_assignments,
-              only: [:index],
-              controller: 'events/hospitality_locality_assignments' do
-      collection do
-        put 'assign'
-        post 'assign'
-      end
-    end
-    resources :hospitality_registration_assignments,
-              param: :locality_id,
-              only: [:index, :show],
-              controller: 'events/hospitality_registration_assignments' do
-      collection do
-        put 'assign'
-        post 'assign'
-      end
-    end
-    resources :hospitality_lodgings,
-              only: [:index],
-              controller: 'events/hospitality_lodgings'
+                collection do
+                  post 'add'
+                  put 'remove'
+                end
+              end
   end
 
   # http://stackoverflow.com/a/22158715
