@@ -5,6 +5,9 @@ class EventLodging < ActiveRecord::Base
   belongs_to :lodging
   has_many :registrations, dependent: :nullify
   
+# == Validations ==========================================================
+  validates_uniqueness_of :lodging, scope: :event
+
 # == Scopes ===============================================================
   #scope :assigned, -> { joins(:registrations).distinct }
   scope :by_name, -> { joins(:lodging).merge(Lodging.order(:name)) }

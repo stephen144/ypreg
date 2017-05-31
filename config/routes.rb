@@ -28,18 +28,17 @@ YpwReg::Application.routes.draw do
     resources :copies, only: [:new, :create, :show],
               controller: 'events/copies'
     resources :localities, 
-              only: [:show, :new, :create],
+              only: [:show, :new, :create, :destroy],
               controller: 'events/localities' do
                 collection do
                   get 'add'
                 end
               end
     resources :lodgings,
-              only: [:index, :new, :create],
+              only: [:show, :create, :destroy],
               controller: 'events/lodgings' do
                 collection do
-                  post 'add'
-                  put 'remove'
+                  get 'add'
                 end
               end
   end

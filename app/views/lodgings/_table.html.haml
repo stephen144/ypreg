@@ -7,11 +7,4 @@
       %th Capacity
       %th Description
   %tbody
-    - lodgings.each do |lodging|
-      - @lodging = lodging.object
-      %tr
-        %td= lodging.name
-        %td= lodging.lodging_type
-        %td= lodging.location_name
-        %td= lodging.max_capacity
-        %td= lodging.description
+    = render lodgings

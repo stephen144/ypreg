@@ -28,12 +28,11 @@ class Events::LocalitiesController < ApplicationController
       render :new and return
     end
 
+    users = @all_locality_users.find(params[:locality_user_ids]).map { |user| {user: user} }
     begin
       @event_locality.transaction(requires_new: true) do
         @event_locality.save!
-        users = @all_locality_users.find(params[:locality_user_ids]).map { |user| {user: user} }
-        registrations = @event_locality.registrations.create!(users)
-        registrations.map { |r| policy(r).create? } 
+        @event_locality.registrations.create!(users).map { |r| policy(r).create? } 
       end
     rescue ActiveRecord::RecordNotUnique
       retry

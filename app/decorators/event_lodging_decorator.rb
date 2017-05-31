@@ -3,7 +3,8 @@ class EventLodgingDecorator < ApplicationDecorator
 
   delegate :description, :lodging_type, :location_name, :max_capacity, :min_capacity, :name, to: :lodging
 
-  def object_id
-    object.id
+  def lodging_id
+    object.lodging.id
   end
+
 end

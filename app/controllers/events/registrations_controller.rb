@@ -21,7 +21,6 @@ class Events::RegistrationsController < ApplicationController
 
   def new
     set_new_registration(params[:event_id], params[:event_locality_id], params[:format])
-    set_event_lodgings
   end
 
   def create
@@ -47,7 +46,6 @@ class Events::RegistrationsController < ApplicationController
       render 'attendance_edit' and return
     end
 
-    set_event_lodgings
     @registration = registration
   end
 
@@ -85,12 +83,13 @@ class Events::RegistrationsController < ApplicationController
 
   def set_new_registration(event_id, event_locality_id, user_id)
     @event = Event.find(event_id)
-    if event_locality_id.present?
-      event_locality = EventLocality.find(event_locality_id)
-    else
+
+    unless event_locality_id.present?
       flash[:error] = 'Sorry, your locality is not registered for this event.'
       redirect_to '/' and return
     end
+    event_locality = EventLocality.find(event_locality_id)
+
     if user_id.present?
       user = event_locality.locality.users.find(user_id)
     else
@@ -99,9 +98,6 @@ class Events::RegistrationsController < ApplicationController
 
     @registration = Registration.new(event_locality: event_locality, user: user)
     authorize @registration
-  end
-
-  def set_event_lodgings
   end
 
 end

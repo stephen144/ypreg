@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20151022151545) do
     t.boolean  "paid",        default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.index ["event_id", "locality_id"], name: "index_event_localities_on_event_id_and_locality_id", unique: true, using: :btree
     t.index ["event_id"], name: "index_event_localities_on_event_id", using: :btree
     t.index ["locality_id"], name: "index_event_localities_on_locality_id", using: :btree
   end
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 20151022151545) do
     t.integer  "lodging_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id", "lodging_id"], name: "index_event_lodgings_on_event_id_and_lodging_id", unique: true, using: :btree
     t.index ["event_id"], name: "index_event_lodgings_on_event_id", using: :btree
     t.index ["lodging_id"], name: "index_event_lodgings_on_lodging_id", using: :btree
   end

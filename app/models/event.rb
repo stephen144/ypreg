@@ -15,6 +15,7 @@ class Event < ActiveRecord::Base
 
   has_many :event_lodgings, dependent: :destroy
   has_many :lodgings, through: :event_lodgings
+  has_many :available_lodgings, -> { with_vacancy }, class_name: 'EventLodging'
 
 # == Validations ==========================================================
   validate :dates_make_sense?

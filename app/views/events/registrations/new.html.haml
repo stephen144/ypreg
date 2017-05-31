@@ -10,25 +10,13 @@
           = render partial: 'form', locals: {event: event, registration: registration, event_lodgings: event_lodgings}
     .col-md-4
       .box
+        .box-header.with-border
+          %h1.box-title User Details
         .box-body
-          .form-group
-            .col-md-4
-              %span.form-control{:disabled => "disabled"}= registration.user_name
-          .form-group
-            .col-md-4
-              %span.form-control{:disabled => "disabled"}= registration.user_role
-          .form-group
-            .col-md-4
-              %span.form-control{:disabled => "disabled"}= registration.user_gender
-          .form-group
-            .col-md-4
-              %span.form-control{:disabled => "disabled"}= registration.user_age
-          .form-group
-            .col-md-4
-              %span.form-control{:disabled => "disabled"}= registration.user_grade
-          .form-group
-            .col-md-4
-              %span.form-control{:disabled => "disabled"}= registration.locality_city
-          .form-group
-            .col-md-4
-              %span.form-control{:disabled => "disabled"}= registration.user_background_check_date
+          %span.form-control{:disabled => "disabled"}= registration.user_name
+          %span.form-control{:disabled => "disabled"}= registration.user_role
+          %span.form-control{:disabled => "disabled"}= registration.user_gender
+          %span.form-control{:disabled => "disabled"}= registration.user_age
+          %span.form-control{:disabled => "disabled"}= registration.user_grade
+          %span.form-control{:disabled => "disabled"}= registration.locality_city
+          %span.form-control{:disabled => "disabled"}= registration.user_background_check_date

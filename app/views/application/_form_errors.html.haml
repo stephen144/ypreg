@@ -1,6 +1,3 @@
-- form_errors = locals[:form_errors]
-- name = locals[:name]
-
 - if form_errors.any?
   .callout.callout-danger
     - errors = pluralize(form_errors.count, "error")

@@ -5,6 +5,7 @@ class CreateEventLocalities < ActiveRecord::Migration[5.0]
       t.belongs_to :locality, index: true
       t.boolean :paid, default: false
 
+      t.index([:event_id, :locality_id], unique: true)
       t.timestamps
     end
   end
