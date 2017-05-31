@@ -3,12 +3,18 @@ class EventDecorator < ApplicationDecorator
 
   delegate :event_type, :location, :name, :over?, :registration_open?
 
-  def dates
-    "#{format_date(object.begin_date)} - #{format_date(object.end_date)}"
-  end
-
   def self.event_types
     Event.event_types.keys.map { |k| [k.titleize, k] }
+  end
+
+  def available_lodgings
+    ids = object.available_lodgings.pluck(:id)
+    q = EventLodging.includes(:lodging).where(id: ids)
+    q.decorate
+  end
+
+  def dates
+    "#{format_date(object.begin_date)} - #{format_date(object.end_date)}"
   end
 
   def localities

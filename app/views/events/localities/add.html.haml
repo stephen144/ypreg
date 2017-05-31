@@ -1,11 +1,9 @@
 %section.content-header
-  %h1 Event Localities
+  %h1 Add Locality to Event
 %section.content
   .row
     .col-xs-12
       .box
-        .box-header.with-border
-          %h1.box-title Localities not participating in event
         .box-body
           %table.table.table-bordered.table-hover.table-striped
             %thead
@@ -17,8 +15,5 @@
                 %tr
                   %td= locality.city
                   %td= locality.state
-                  %td
-                    - if event.registration_open?
-                      = link_to 'Add', new_event_locality_path(@event, locality), class: 'btn btn-default btn-sm'
+                  %td= link_to 'Add', new_event_locality_path(@event, locality), class: 'btn btn-default btn-sm'
 .col-md-12
-  = link_to 'Back', event_path(@event), class: 'btn btn-default'

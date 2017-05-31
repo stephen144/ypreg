@@ -1,11 +1,11 @@
+%section.content-header
+  %h1 Add Lodgings to Event
 %section.content
   .row
     .col-xs-12
       .box
-        .box-header.with-border
-          %h1.box-title Add Lodgings
         .box-body
-          = form_tag add_event_lodgings_path, method: :post do
+          = form_tag event_lodgings_path, method: :post do
             %table.table.table-striped
               %thead
                 %tr
@@ -22,5 +22,4 @@
                     %td= lodging.lodging_type
                     %td= lodging.min_capacity
                     %td= lodging.max_capacity
-            - if event.other_lodgings.any?
-              = submit_tag 'Add', class: 'btn btn-primary btn-sm'
+            = submit_tag 'Add', class: 'btn btn-primary pull-right'

@@ -7,5 +7,5 @@
           %h1.box-title= "New #{name.titleize}"
         .box-body
           - object = instance_variable_get("@#{name}")
-          = render 'form_errors', locals: {name: name, form_errors: object.errors}
-          = render 'form'
+          = render partial: 'form_errors', locals: {name: name, form_errors: object.errors}
+          = render partial: 'form'

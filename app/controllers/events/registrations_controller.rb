@@ -102,8 +102,6 @@ class Events::RegistrationsController < ApplicationController
   end
 
   def set_event_lodgings
-    event_lodging_ids = @event.event_lodgings.with_vacancy.pluck(:id)
-    @event_lodgings = EventLodging.includes(:lodging).find(event_lodging_ids)
   end
 
 end

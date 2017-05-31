@@ -1,9 +1,34 @@
-%h2 New Registration
-%em Register for #{event.name}
-.col-md-8
-  .widget
-    .widget-header
-      %h3
-        %i.fa.fa-edit
-    .widget-content
-      = render partial: 'form', locals: {event: event, registration: registration, event_lodgings: event_lodgings}
+%section.content
+  .row
+    .col-md-4
+      .box.box-primary
+        .box-header.with-border
+          %h1.box-title
+            New Registration @ #{event.name}
+        .box-body
+          = render partial: 'form_errors', locals: {name: 'registration', form_errors: @registration.errors}
+          = render partial: 'form', locals: {event: event, registration: registration, event_lodgings: event_lodgings}
+    .col-md-4
+      .box
+        .box-body
+          .form-group
+            .col-md-4
+              %span.form-control{:disabled => "disabled"}= registration.user_name
+          .form-group
+            .col-md-4
+              %span.form-control{:disabled => "disabled"}= registration.user_role
+          .form-group
+            .col-md-4
+              %span.form-control{:disabled => "disabled"}= registration.user_gender
+          .form-group
+            .col-md-4
+              %span.form-control{:disabled => "disabled"}= registration.user_age
+          .form-group
+            .col-md-4
+              %span.form-control{:disabled => "disabled"}= registration.user_grade
+          .form-group
+            .col-md-4
+              %span.form-control{:disabled => "disabled"}= registration.locality_city
+          .form-group
+            .col-md-4
+              %span.form-control{:disabled => "disabled"}= registration.user_background_check_date
