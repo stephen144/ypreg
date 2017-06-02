@@ -6,13 +6,13 @@ hdfelix/ypreg](https://codeship.com/projects/c65ff3a0-7a8e-0132-7773-2e5924fc280
 Repo: https://github.com/hdfelix/ypreg.git
 
 This is an event registration management site. You can use this site to manage registrations short one-day events that require
-no hospitality accomodations as well as multi-day events where hospitality accomodations are necessary.  
+no accomodations as well as multi-day events where accomodations are necessary.  
    
 ## Features
 
 * Create and manage events
 * Create and manage event locations
-* Create and manage hospitality locations
+* Create and manage lodgings
 * Create and manage different types of users
 
 ## Setup

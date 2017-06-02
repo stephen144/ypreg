@@ -177,8 +177,8 @@ admin2 = User.new(
   grade: :other,
   role: :admin,
   locality: Locality.all.sample,
-  password: 'chiracha',
-  password_confirmation: 'chiracha',
+  password: 'devaccount',
+  password_confirmation: 'devaccount',
   background_check_date: Time.zone.now,
 )
 admin2.skip_confirmation!
